@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'jacoco'
     // TODO add jacoco
 }
 
@@ -39,5 +40,17 @@ shadowJar {
 }
 
 // TODO Specify Jacoco version
+jacoco{
+    toolVersion = "0.8.5"
+}
+
 
 // TODO Configure Jacoco
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = true
+        html.required = true
+    }
+}
